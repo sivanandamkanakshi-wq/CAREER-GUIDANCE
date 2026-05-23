@@ -131,7 +131,7 @@ export class CareerComponent {
     'CEC': [
       'All',
       'BCom General',
-      'BCom Computers',
+      'BCom Computers Application',
       'BCom Accounting & Finance',
       'BCom Banking & Insurance',
       'BBA',
