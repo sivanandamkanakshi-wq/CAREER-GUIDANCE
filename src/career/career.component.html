@@ -1,0 +1,518 @@
+<section class="career-page">
+  <header class="career-header">
+    <div class="title">
+      <h1><i class="fa-solid fa-graduation-cap title-icon" aria-hidden="true"></i> Dream Big... Choose Smart</h1>
+    </div>
+    <div class="actions">
+      <a routerLink="/" class="btn-home" title="Home" aria-label="Go to home">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+  </header>
+
+
+
+  <div class="filters">
+    <div class="filter">
+      <label for="f-After10th">After 10th</label>
+      <select id="f-After10th" [(ngModel)]="selectedAfter10th" (ngModelChange)="onAfter10thChange($event)">
+        <option *ngFor="let opt of after10thOptions">{{ opt }}</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="f-group">Select Your Group</label>
+      <select id="f-group" [(ngModel)]="selectedGroup" (ngModelChange)="onGroupChange($event)" [disabled]="selectedAfter10th === 'All'">
+        <option *ngFor="let g of groupOptions">{{ g }}</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="f-degree">Select Degree Course</label>
+      <select id="f-degree" [(ngModel)]="selectedDegree" (ngModelChange)="onDegreeChange($event)" [disabled]="selectedGroup === 'All'">
+        <option *ngFor="let d of degreeOptions">{{ d }}</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="f-higher-studies">Higher Studies (PG)</label>
+      <select id="f-higher-studies" [(ngModel)]="selectedHigher" (ngModelChange)="onHigherChange($event)" [disabled]="selectedDegree === 'All'">
+        <option *ngFor="let h of higherOptions">{{ h }}</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<div class="container" *ngIf="(selectedGroup && selectedGroup !== 'All') || (selectedDegree && selectedDegree !== 'All')">
+  <div class="row g-4">
+    <div class="col-12 col-lg-8">
+      <ng-container *ngIf="selectedHigher && selectedHigher !== 'All'; else showDegreeOrGroup">
+        <ng-container *ngTemplateOutlet="higherOverview"></ng-container>
+      </ng-container>
+
+      <ng-template #showDegreeOrGroup>
+        <div *ngIf="selectedDegree && selectedDegree !== 'All'; else groupOverviewMain">
+        <div class="card detail-card">
+          <div class="card-body overview-panel">
+            <h4 class="mb-3">{{ getSelectedDegreeFullDetails()?.title }}</h4>
+            <section class="mb-3">
+              <h6>Overview</h6>
+              <p>{{ getSelectedDegreeFullDetails()?.overview }}</p>
+            </section>
+
+            <section class="mb-3 row">
+              <div class="col-12 col-md-4">
+                <h6>Eligibility</h6>
+                <ul>
+                  <li *ngFor="let e of getSelectedDegreeFullDetails()?.eligibility">{{ e }}</li>
+                </ul>
+              </div>
+              <div class="col-12 col-md-4">
+                <h6>Duration</h6>
+                <p>{{ getSelectedDegreeFullDetails()?.duration }}</p>
+              </div>
+              <div class="col-12 col-md-4">
+                <h6>Subjects Covered</h6>
+                <ul>
+                  <li *ngFor="let s of getSelectedDegreeFullDetails()?.subjectsCovered">{{ s }}</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="mb-3">
+              <h6>Skills You Will Learn</h6>
+              <ul>
+                <li *ngFor="let sk of getSelectedDegreeFullDetails()?.skills">{{ sk }}</li>
+              </ul>
+            </section>
+
+            <section class="mb-3">
+              <h6>Career Opportunities</h6>
+              <ul>
+                <li *ngFor="let c of getSelectedDegreeFullDetails()?.careerOpportunities">{{ c }}</li>
+              </ul>
+            </section>
+
+            <section class="mb-3 row">
+              <div class="col-12 col-md-6">
+                <h6>Government Jobs</h6>
+                <ul>
+                  <li *ngFor="let g of getSelectedDegreeFullDetails()?.governmentJobs">{{ g }}</li>
+                </ul>
+              </div>
+              <div class="col-12 col-md-6">
+                <h6>Private Jobs</h6>
+                <ul>
+                  <li *ngFor="let p of getSelectedDegreeFullDetails()?.privateJobs">{{ p }}</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="mb-3">
+              <h6>Higher Studies</h6>
+              <ul>
+                <li *ngFor="let h of getSelectedDegreeFullDetails()?.higherStudies">{{ h }}</li>
+              </ul>
+            </section>
+
+            <section class="mb-3 row">
+              <div class="col-12 col-md-6">
+                <h6>Entrance Exams</h6>
+                <ul>
+                  <li *ngFor="let ex of getSelectedDegreeFullDetails()?.entranceExams">{{ ex }}</li>
+                </ul>
+              </div>
+              <div class="col-12 col-md-6">
+                <h6>Salary</h6>
+                <p>{{ getSelectedDegreeFullDetails()?.salary }}</p>
+              </div>
+            </section>
+
+            <section class="mb-3">
+              <h6>Future Scope</h6>
+              <p>{{ getSelectedDegreeFullDetails()?.futureScope }}</p>
+            </section>
+
+            <section class="mb-3">
+              <h6>Top Companies</h6>
+              <ul>
+                <li *ngFor="let c of getSelectedDegreeFullDetails()?.topCompanies">{{ c }}</li>
+              </ul>
+            </section>
+
+            <section class="mb-3">
+              <h6>Related Videos</h6>
+              <p><a [href]="getSelectedDegreeFullDetails()?.relatedVideos" target="_blank">Watch videos for {{ getSelectedDegreeFullDetails()?.title }}</a></p>
+            </section>
+
+            <section class="mb-3">
+              <h6>FAQs</h6>
+              <ul>
+                <li *ngFor="let f of getSelectedDegreeFullDetails()?.faqs">{{ f }}</li>
+              </ul>
+            </section>
+
+            <section class="mb-3">
+              <h6>Conclusion</h6>
+              <p>{{ getSelectedDegreeFullDetails()?.conclusion }}</p>
+            </section>          </div>
+        </div>
+        </div>
+      </ng-template>
+
+      <ng-template #groupOverviewMain>
+        <div class="card">
+          <div class="card-body overview-panel">
+            <h3 class="overview-header">{{ groupOverviewMap[selectedGroup]?.title || (selectedGroup + ' Group Overview') }}</h3>
+            <p class="muted"><strong>About:</strong> {{ groupOverviewMap[selectedGroup]?.about || ('Overview for ' + selectedGroup) }}</p>
+            <p class="muted"><strong>Why Choose:</strong> {{ groupOverviewMap[selectedGroup]?.whyChoose || '' }}</p>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.subjects?.length">
+              <h6 class="overview-section">Subjects in this Group</h6>
+              <ul>
+                <li *ngFor="let s of groupOverviewMap[selectedGroup]?.subjects">{{ s }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.subjectDetails">
+              <h6 class="overview-section">Subject Details</h6>
+              <div *ngFor="let key of (groupOverviewMap[selectedGroup]?.subjectDetails | keyvalue)">
+                <p><strong>{{ key.key }}:</strong> {{ key.value }}</p>
+              </div>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.skills?.length">
+              <h6 class="overview-section">Skills You Will Learn</h6>
+              <ul>
+                <li *ngFor="let sk of groupOverviewMap[selectedGroup]?.skills">{{ sk }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.skillDetails?.length">
+              <h6 class="overview-section">Skill Details</h6>
+              <ul>
+                <li *ngFor="let sd of groupOverviewMap[selectedGroup]?.skillDetails">{{ sd }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.coursesAfter?.length">
+              <h6 class="overview-section">Popular Courses After</h6>
+              <ul>
+                <li *ngFor="let c of groupOverviewMap[selectedGroup]?.coursesAfter">{{ c }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.careerOptions?.length">
+              <h6 class="overview-section">Career Options</h6>
+              <ul>
+                <li *ngFor="let co of groupOverviewMap[selectedGroup]?.careerOptions">{{ co }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.degreeSpecializations?.length">
+              <h6 class="overview-section">Degree Specializations</h6>
+              <ul>
+                <li *ngFor="let ds of groupOverviewMap[selectedGroup]?.degreeSpecializations">{{ ds }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.governmentExams?.length || groupOverviewMap[selectedGroup]?.governmentJobs?.length || groupOverviewMap[selectedGroup]?.privateJobs?.length">
+              <div class="row">
+                <div class="col-12 col-md-4" *ngIf="groupOverviewMap[selectedGroup]?.governmentExams?.length">
+                  <h6>Government Exams</h6>
+                  <ul>
+                    <li *ngFor="let ex of groupOverviewMap[selectedGroup]?.governmentExams">{{ ex }}</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4" *ngIf="groupOverviewMap[selectedGroup]?.governmentJobs?.length">
+                  <h6>Government Jobs</h6>
+                  <ul>
+                    <li *ngFor="let g of groupOverviewMap[selectedGroup]?.governmentJobs">{{ g }}</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-4" *ngIf="groupOverviewMap[selectedGroup]?.privateJobs?.length">
+                  <h6>Private Jobs</h6>
+                  <ul>
+                    <li *ngFor="let p of groupOverviewMap[selectedGroup]?.privateJobs">{{ p }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.higherEducation?.length">
+              <h6 class="overview-section">Higher Education</h6>
+              <ul>
+                <li *ngFor="let he of groupOverviewMap[selectedGroup]?.higherEducation">{{ he }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.bestPaths?.length">
+              <h6 class="overview-section">Suggested Pathways</h6>
+              <ul>
+                <li *ngFor="let bp of groupOverviewMap[selectedGroup]?.bestPaths">{{ bp }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.salaryInfo">
+              <h6 class="overview-section">Salary</h6>
+              <p>{{ groupOverviewMap[selectedGroup]?.salaryInfo }}</p>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.futureScope">
+              <h6 class="overview-section">Future Scope</h6>
+              <p>{{ groupOverviewMap[selectedGroup]?.futureScope }}</p>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.topColleges?.length || groupOverviewMap[selectedGroup]?.topUniversities?.length">
+              <h6 class="overview-section">Top Colleges & Universities</h6>
+              <ul>
+                <li *ngFor="let t of (groupOverviewMap[selectedGroup]?.topColleges || [])">{{ t }}</li>
+                <li *ngFor="let u of (groupOverviewMap[selectedGroup]?.topUniversities || [])">{{ u }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.certifications?.length">
+              <h6 class="overview-section">Certifications</h6>
+              <ul>
+                <li *ngFor="let cert of groupOverviewMap[selectedGroup]?.certifications">{{ cert }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.certificationLinks?.length || groupOverviewMap[selectedGroup]?.universityLinks?.length">
+              <h6 class="overview-section">Helpful Links</h6>
+              <ul>
+                <li *ngFor="let cl of (groupOverviewMap[selectedGroup]?.certificationLinks || [])"><a [href]="cl" target="_blank">{{ cl }}</a></li>
+                <li *ngFor="let ul of (groupOverviewMap[selectedGroup]?.universityLinks || [])"><a [href]="ul" target="_blank">{{ ul }}</a></li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.industriesHiringCECStudents?.length">
+              <h6 class="overview-section">Industries Hiring</h6>
+              <ul>
+                <li *ngFor="let ind of groupOverviewMap[selectedGroup]?.industriesHiringCECStudents">{{ ind }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.advantages?.length || groupOverviewMap[selectedGroup]?.challenges?.length">
+              <div class="row">
+                <div class="col-12 col-md-6" *ngIf="groupOverviewMap[selectedGroup]?.advantages?.length">
+                  <h6>Advantages</h6>
+                  <ul>
+                    <li *ngFor="let a of groupOverviewMap[selectedGroup]?.advantages">{{ a }}</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6" *ngIf="groupOverviewMap[selectedGroup]?.challenges?.length">
+                  <h6>Challenges</h6>
+                  <ul>
+                    <li *ngFor="let ch of groupOverviewMap[selectedGroup]?.challenges">{{ ch }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.dailyActivities?.length">
+              <h6 class="overview-section">Typical Daily Activities</h6>
+              <ul>
+                <li *ngFor="let d of groupOverviewMap[selectedGroup]?.dailyActivities">{{ d }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.studentSuitableFor?.length">
+              <h6 class="overview-section">Suitable For</h6>
+              <ul>
+                <li *ngFor="let st of groupOverviewMap[selectedGroup]?.studentSuitableFor">{{ st }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.videoLinks?.length || groupOverviewMap[selectedGroup]?.websites?.length">
+              <h6 class="overview-section">Videos & Websites</h6>
+              <ul>
+                <li *ngFor="let v of (groupOverviewMap[selectedGroup]?.videoLinks || [])"><a [href]="v" target="_blank">Watch</a></li>
+                <li *ngFor="let w of (groupOverviewMap[selectedGroup]?.websites || [])"><a [href]="w" target="_blank">{{ w }}</a></li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.faqs?.length">
+              <h6 class="overview-section">FAQs</h6>
+              <ul>
+                <li *ngFor="let f of groupOverviewMap[selectedGroup]?.faqs">{{ f }}</li>
+              </ul>
+            </div>
+            <div *ngIf="groupOverviewMap[selectedGroup]?.conclusion">
+              <h6 class="overview-section">Conclusion</h6>
+              <p>{{ groupOverviewMap[selectedGroup]?.conclusion }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    
+      <!-- Higher overview template to reuse in main and side panes -->
+      <ng-template #higherOverview>
+        <div class="card mb-3">
+          <div class="card-body overview-panel">
+            <h5 class="overview-header">{{ selectedHigherOverview?.title }}</h5>
+            <p class="muted"><strong>About:</strong> {{ selectedHigherOverview?.about }}</p>
+
+            <p class="muted"><strong>Why Choose:</strong> {{ selectedHigherOverview?.whyChoose || '—' }}</p>
+
+            <h6>Eligibility Criteria</h6>
+            <ul *ngIf="selectedHigherOverview?.eligibilityCriteria?.length; else noEligibility">
+              <li *ngFor="let e of selectedHigherOverview?.eligibilityCriteria">{{ e }}</li>
+            </ul>
+            <ng-template #noEligibility><p class="muted">Not available.</p></ng-template>
+
+            <h6>Admission Process</h6>
+            <p>{{ selectedHigherOverview?.admissionProcess || 'Not available.' }}</p>
+
+            <h6>Course Duration</h6>
+            <p>{{ selectedHigherOverview?.courseDuration || 'Not available.' }}</p>
+
+            <h6>Popular Higher Education Courses</h6>
+            <ul *ngIf="selectedHigherOverview?.popularCourses?.length; else nonePopular">
+              <li *ngFor="let pc of selectedHigherOverview?.popularCourses">{{ pc }}</li>
+            </ul>
+            <ng-template #nonePopular><p class="muted">Not available.</p></ng-template>
+
+          <h6>Specializations Available</h6>
+          <ul *ngIf="selectedHigherOverview?.specializations?.length; else noneSpec">
+            <li *ngFor="let sp of selectedHigherOverview?.specializations">{{ sp }}</li>
+          </ul>
+          <ng-template #noneSpec><p class="muted">Not available.</p></ng-template>
+
+          <h6>Subjects</h6>
+          <ul *ngIf="selectedHigherOverview?.subjects?.length; else noneSubjects">
+            <li *ngFor="let s of selectedHigherOverview?.subjects">{{ s }}</li>
+          </ul>
+          <ng-template #noneSubjects><p class="muted">Not available.</p></ng-template>
+
+          <h6>Skills You Will Gain</h6>
+          <ul *ngIf="selectedHigherOverview?.skills?.length; else noneSkills">
+            <li *ngFor="let sk of selectedHigherOverview?.skills">{{ sk }}</li>
+          </ul>
+          <ng-template #noneSkills><p class="muted">Not available.</p></ng-template>
+
+          <h6>Career Opportunities</h6>
+          <ul *ngIf="selectedHigherOverview?.careerOptions?.length; else noneCareer">
+            <li *ngFor="let c of selectedHigherOverview?.careerOptions">{{ c }}</li>
+          </ul>
+          <ng-template #noneCareer><p class="muted">Not available.</p></ng-template>
+
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h6>Government Job Opportunities</h6>
+              <ul *ngIf="selectedHigherOverview?.governmentJobs?.length; else noneGov">
+                <li *ngFor="let g of selectedHigherOverview?.governmentJobs">{{ g }}</li>
+              </ul>
+              <ng-template #noneGov><p class="muted">Not available.</p></ng-template>
+            </div>
+            <div class="col-12 col-md-6">
+              <h6>Private Job Opportunities</h6>
+              <ul *ngIf="selectedHigherOverview?.privateJobs?.length; else nonePriv">
+                <li *ngFor="let p of selectedHigherOverview?.privateJobs">{{ p }}</li>
+              </ul>
+              <ng-template #nonePriv><p class="muted">Not available.</p></ng-template>
+            </div>
+          </div>
+
+          <h6>Research Opportunities</h6>
+          <ul *ngIf="selectedHigherOverview?.researchOpportunities?.length; else noneResearch">
+            <li *ngFor="let r of selectedHigherOverview?.researchOpportunities">{{ r }}</li>
+          </ul>
+          <ng-template #noneResearch><p class="muted">Not available.</p></ng-template>
+
+          <h6>Study Abroad Options</h6>
+          <ul *ngIf="selectedHigherOverview?.studyAbroadOptions?.length; else noneAbroad">
+            <li *ngFor="let sa of selectedHigherOverview?.studyAbroadOptions">{{ sa }}</li>
+          </ul>
+          <ng-template #noneAbroad><p class="muted">Not available.</p></ng-template>
+
+          <h6>Entrance Exams</h6>
+          <ul *ngIf="selectedHigherOverview?.entranceExams?.length; else noneExams">
+            <li *ngFor="let ex of selectedHigherOverview?.entranceExams">{{ ex }}</li>
+          </ul>
+          <ng-template #noneExams><p class="muted">Not available.</p></ng-template>
+
+          <h6>Scholarships Available</h6>
+          <ul *ngIf="selectedHigherOverview?.scholarships?.length; else noneSch">
+            <li *ngFor="let sch of selectedHigherOverview?.scholarships">{{ sch }}</li>
+          </ul>
+          <ng-template #noneSch><p class="muted">Not available.</p></ng-template>
+
+          <h6>Top Universities & Colleges</h6>
+          <ul *ngIf="selectedHigherOverview?.topUniversities?.length; else noneTop">
+            <li *ngFor="let t of selectedHigherOverview?.topUniversities">{{ t }}</li>
+          </ul>
+            <ng-template #noneTop><p class="muted">Not available.</p></ng-template>
+
+          <h6>Salary Opportunities</h6>
+          <p>{{ selectedHigherOverview?.salaryInfo || 'Not available.' }}</p>
+
+          <h6>Future Scope</h6>
+          <p>{{ selectedHigherOverview?.futureScope || 'Not available.' }}</p>
+
+          <h6>Related Video Links</h6>
+          <ul *ngIf="selectedHigherOverview?.videoLinks?.length; else noneVid">
+            <li *ngFor="let v of selectedHigherOverview?.videoLinks"><a [href]="v" target="_blank">Watch</a></li>
+          </ul>
+          <ng-template #noneVid><p class="muted">Not available.</p></ng-template>
+
+          <h6>Useful Official Websites</h6>
+          <ul *ngIf="selectedHigherOverview?.websites?.length; else noneWeb">
+            <li *ngFor="let w of selectedHigherOverview?.websites"><a [href]="w" target="_blank">{{ w }}</a></li>
+          </ul>
+          <ng-template #noneWeb><p class="muted">Not available.</p></ng-template>
+
+          <h6>Interview Preparation Links</h6>
+          <ul *ngIf="selectedHigherOverview?.interviewPrepLinks?.length; else noneInterview">
+            <li *ngFor="let l of selectedHigherOverview?.interviewPrepLinks"><a [href]="l" target="_blank">{{ l }}</a></li>
+          </ul>
+          <ng-template #noneInterview><p class="muted">Not available.</p></ng-template>
+
+          <h6>Course Learning Links</h6>
+          <ul *ngIf="selectedHigherOverview?.courseLinks?.length; else noneCourseLinks">
+            <li *ngFor="let c of selectedHigherOverview?.courseLinks"><a [href]="c" target="_blank">{{ c }}</a></li>
+          </ul>
+          <ng-template #noneCourseLinks><p class="muted">Not available.</p></ng-template>
+
+          <h6>Government Job Links</h6>
+          <ul *ngIf="selectedHigherOverview?.governmentJobLinks?.length; else noneGovLinks">
+            <li *ngFor="let g of selectedHigherOverview?.governmentJobLinks"><a [href]="g" target="_blank">{{ g }}</a></li>
+          </ul>
+          <ng-template #noneGovLinks><p class="muted">Not available.</p></ng-template>
+
+          <h6>Related Resources</h6>
+          <ul *ngIf="selectedHigherOverview?.relatedResources?.length; else noneRelatedRes">
+            <li *ngFor="let r of selectedHigherOverview?.relatedResources"><a [href]="r" target="_blank">{{ r }}</a></li>
+          </ul>
+          <ng-template #noneRelatedRes><p class="muted">Not available.</p></ng-template>
+
+          <h6>FAQs</h6>
+          <ul *ngIf="selectedHigherOverview?.faqs?.length; else noneFaq">
+            <li *ngFor="let f of selectedHigherOverview?.faqs">{{ f }}</li>
+          </ul>
+          <ng-template #noneFaq><p class="muted">Not available.</p></ng-template>
+
+          <h6>Conclusion</h6>
+          <p>{{ selectedHigherOverview?.conclusion || 'Not available.' }}</p>
+
+            <div *ngIf="relatedDegreesForHigher?.length">
+              <h6>Related Undergraduate Degrees</h6>
+              <ul>
+                <li *ngFor="let rd of relatedDegreesForHigher">
+                  <a href="#" (click)="selectRelatedDegree(rd); $event.preventDefault()">{{ rd }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+    <div class="col-12 col-lg-4">
+      <div *ngIf="false" class="card mb-3">
+        <div class="card-body overview-panel">
+          <h5 class="overview-header">{{ groupOverviewMap[selectedGroup]?.title || (selectedGroup + ' Group Overview') }}</h5>
+          <p class="muted"><strong>About:</strong> {{ groupOverviewMap[selectedGroup]?.about || ('Overview for ' + selectedGroup) }}</p>
+          <p class="muted"><strong>Why Choose:</strong> {{ groupOverviewMap[selectedGroup]?.whyChoose || 'Benefits and career fit.' }}</p>
+          <div *ngIf="groupOverviewMap[selectedGroup]?.subjects?.length">
+            <strong>Subjects:</strong>
+            <ul>
+              <li *ngFor="let s of groupOverviewMap[selectedGroup]?.subjects">{{ s }}</li>
+            </ul>
+          </div>
+          <div *ngIf="groupOverviewMap[selectedGroup]?.skills?.length">
+            <strong>Skills You Will Learn:</strong>
+            <ul>
+              <li *ngFor="let sk of groupOverviewMap[selectedGroup]?.skills">{{ sk }}</li>
+            </ul>
+          </div>
+          <div *ngIf="groupOverviewMap[selectedGroup]?.topColleges?.length">
+            <strong>Top Colleges:</strong>
+            <ul>
+              <li *ngFor="let c of groupOverviewMap[selectedGroup]?.topColleges">{{ c }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

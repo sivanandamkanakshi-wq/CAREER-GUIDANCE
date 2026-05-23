@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Career page: force container gradient and panel styles to ensure consistent look */
+.career-page + .container {
+	background: linear-gradient(180deg, rgba(94,53,177,0.08) 0%, rgba(94,53,177,0.02) 60%);
+	padding: 1.75rem 1.5rem;
+	border-radius: 10px;
+	margin-top: 1.25rem;
+}
+
+.career-page .card.detail-card,
+.career-page .card .overview-panel,
+.career-page .overview-panel {
+	background: #ffffff !important;
+	border: 1px solid rgba(94,53,177,0.08) !important;
+	box-shadow: 0 10px 30px rgba(94,53,177,0.06) !important;
+	padding: 1.25rem !important;
+	border-radius: 8px !important;
+	color: #222 !important;
+}
+
+.career-page .overview-header,
+.career-page h4 {
+	color: #5e35b1 !important;
+	font-weight: 700;
+}
+
+.career-page .muted {
+	color: rgba(0,0,0,0.65) !important;
+}
+
+/* Global overrides to ensure career detail card uses intended styles (prevent bootstrap/global overrides) */
+.career-page .detail-card {
+	border-radius: 12px !important;
+	background: linear-gradient(180deg,#ffffff 0%, #fbfbff 100%) !important;
+	border: 2px solid rgba(94,53,177,0.12) !important;
+	box-shadow: 0 12px 36px rgba(20,20,60,0.06) !important;
+}
+
+.career-page .detail-card .card-body {
+	padding: 1.75rem 2rem !important;
+	color: #2b2b3d !important;
+	line-height: 1.6 !important;
+	font-size: 1rem !important;
+}
+
+.career-page .detail-card h4 {
+	color: #3a2160 !important;
+	font-size: 1.35rem !important;
+	margin-bottom: 0.6rem !important;
+}
+
+.career-page .detail-card h6 {
+	color: #5e35b1 !important;
+	font-weight: 700 !important;
+}
+
+.career-page .detail-card ul {
+	padding-left: 1.1rem !important;
+}
+
+.career-page .detail-card li {
+	margin-bottom: 0.45rem !important;
+}
+
+/* Ensure overview panel uses same background when shown in main pane */
+.career-page .card:not(.detail-card) .card-body,
+.career-page .detail-card .card-body {
+	background: linear-gradient(180deg,#ffffff 0%, #fbfbff 100%) !important;
+}
