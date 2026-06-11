@@ -10,8 +10,6 @@
     </div>
   </header>
 
-
-
   <div class="filters">
     <div class="filter">
       <label for="f-After10th">After 10th</label>
@@ -44,10 +42,263 @@
 </section>
 
 <div class="container" *ngIf="(selectedGroup && selectedGroup !== 'All') || (selectedDegree && selectedDegree !== 'All')">
+  <!-- BiPC Image -->
+<div *ngIf="selectedGroup === 'BiPC'" class="text-center mb-4">
+  <img src="assets/images/bipc.jpg" alt="BiPC" class="img-fluid rounded shadow">
+</div>
+
+<!-- CEC Image -->
+<div *ngIf="selectedGroup === 'CEC'" class="text-center mb-4">
+  <img src="assets/images/cec.jpg" alt="CEC" class="img-fluid rounded shadow">
+</div>
+<!-- MPC Image -->
+<div *ngIf="selectedGroup === 'MPC'" class="text-center mb-4">
+  <img
+    src="assets/images/mpc.jpg"
+    alt="MPC"
+    class="img-fluid rounded shadow"
+    style="max-height:900px;">
+</div>
+<!-- HEC Image -->
+<div *ngIf="selectedGroup === 'HEC'" class="text-center mb-4">
+  <img
+    src="assets/images/hec.jpg"
+    alt="HEC"
+    class="img-fluid rounded shadow"
+    style="max-width:900px; height:auto;">
+</div>
+<!-- MEC Image -->
+<div *ngIf="selectedGroup === 'MEC'" class="text-center mb-4">
+  <img src="assets/images/mec.jpg" alt="MEC" class="img-fluid rounded shadow">
+</div>
+<!-- Agriculture Image -->
+<div *ngIf="selectedGroup === 'Agriculture'" class="text-center mb-4">
+  <img src="assets/images/agriculture.jpg" alt="Agriculture" class="img-fluid rounded shadow">
+</div>
+<!-- Automobile Engineering Technician Image -->
+<div *ngIf="selectedGroup === 'Automobile Engineering Technician'" class="text-center mb-4">
+  <img src="assets/images/aet.jpg"
+       alt="Automobile Engineering Technician"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Banking & Financial Services Image -->
+<div *ngIf="selectedGroup === 'Banking & Financial Services'" class="text-center mb-4">
+  <img src="assets/images/bank.jpg"
+       alt="Banking & Financial Services"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Computer Hardware & Networking Image -->
+<div *ngIf="selectedGroup === 'Computer Hardware & Networking'" class="text-center mb-4">
+  <img src="assets/images/cnh.jpg"
+       alt="Computer Hardware & Networking"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Computer Science Engineering -->
+<div *ngIf="selectedGroup === 'Computer Science & Engineering'" class="text-center mb-4">
+  <img src="assets/images/computer.jpg"
+       alt="Computer Science Engineering"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Electrical Technician -->
+<div *ngIf="selectedGroup === 'Electrical Technician'" class="text-center mb-4">
+  <img src="assets/images/elec.jpg"
+       alt="Electrical Technician"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Electronics Technology -->
+<div *ngIf="selectedGroup === 'Electronics Technology'" class="text-center mb-4">
+  <img src="assets/images/et.jpg"
+       alt="Electronics Technology"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Fashion Designing -->
+<div *ngIf="selectedGroup === 'Fashion Designing'" class="text-center mb-4">
+  <img src="assets/images/fd.jpg"
+       alt="Fashion Designing"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Food Processing -->
+<div *ngIf="selectedGroup === 'Food Processing'" class="text-center mb-4">
+  <img src="assets/images/fp.jpg"
+       alt="Food Processing"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- General Insurance -->
+<div *ngIf="selectedGroup === 'General Insurance'" class="text-center mb-4">
+  <img src="assets/images/gi.jpg"
+       alt="General Insurance"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Hotel Management & Catering -->
+<div *ngIf="selectedGroup === 'Hotel Management & Catering'" class="text-center mb-4">
+  <img src="assets/images/hmc.jpg"
+       alt="Hotel Management & Catering"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Medical Lab Technician -->
+<div *ngIf="selectedGroup === 'Medical Lab Technician'" class="text-center mb-4">
+  <img src="assets/images/mlt.jpg"
+       alt="Medical Lab Technician"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Multimedia & Animation -->
+<div *ngIf="selectedGroup === 'Multimedia & Animation'" class="text-center mb-4">
+  <img src="assets/images/ma.jpg"
+       alt="Multimedia & Animation"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Office Assistantship -->
+<div *ngIf="selectedGroup === 'Office Assistantship'" class="text-center mb-4">
+  <img src="assets/images/oa.jpg"
+       alt="Office Assistantship"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Retail Management -->
+<div *ngIf="selectedGroup === 'Retail Management'" class="text-center mb-4">
+  <img src="assets/images/rm.jpg"
+       alt="Retail Management"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Tourism & Travel Techniques -->
+<div *ngIf="selectedGroup === 'Tourism & Travel Techniques'" class="text-center mb-4">
+  <img src="assets/images/tt.jpg"
+       alt="Tourism & Travel Techniques"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Web Designing -->
+<div *ngIf="selectedGroup === 'Web Designing'" class="text-center mb-4">
+  <img src="assets/images/wd.jpg"
+       alt="Web Designing"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Electrician -->
+<div *ngIf="selectedGroup === 'Electrician'" class="text-center mb-4">
+  <img src="assets/images/ec.jpg"
+       alt="Electrician"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Fitter -->
+<div *ngIf="selectedGroup === 'Fitter'" class="text-center mb-4">
+  <img src="assets/images/fit.jpg"
+       alt="Fitter"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Welder -->
+<div *ngIf="selectedGroup === 'Welder'" class="text-center mb-4">
+  <img src="assets/images/welder.jpg"
+       alt="Welder"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Turner -->
+<div *ngIf="selectedGroup === 'Turner'" class="text-center mb-4">
+  <img src="assets/images/turner.jpg"
+       alt="Turner"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Machinist -->
+<div *ngIf="selectedGroup === 'Machinist'" class="text-center mb-4">
+  <img src="assets/images/machinist.jpg"
+       alt="Machinist"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Mechanic Diesel -->
+<div *ngIf="selectedGroup === 'Mechanic Diesel'" class="text-center mb-4">
+  <img src="assets/images/md.jpg"
+       alt="Mechanic Diesel"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Mechanic Motor Vehicle (MMV) -->
+<div *ngIf="selectedGroup === 'Mechanic Motor Vehicle (MMV)'" class="text-center mb-4">
+  <img src="assets/images/mmv.jpg"
+       alt="Mechanic Motor Vehicle (MMV)"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Refrigeration & AC Technician -->
+<div *ngIf="selectedGroup === 'Refrigeration & AC Technician'" class="text-center mb-4">
+  <img src="assets/images/rat.jpg"
+       alt="Refrigeration & AC Technician"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Electronics Mechanic -->
+<div *ngIf="selectedGroup === 'Electronics Mechanic'" class="text-center mb-4">
+  <img src="assets/images/em.jpg"
+       alt="Electronics Mechanic"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Instrument Mechanic -->
+<div *ngIf="selectedGroup === 'Instrument Mechanic'" class="text-center mb-4">
+  <img src="assets/images/im.jpg"
+       alt="Instrument Mechanic"
+       class="img-fluid rounded shadow">
+</div>
+<!-- Diploma in Computer Science Engineering -->
+<div *ngIf="selectedGroup === 'Diploma in Computer Science Engineering (CSE)'" class="text-center mb-4">
+  <img src="assets/images/dcse.jpg"
+     alt="Diploma in Computer Science Engineering"
+     class="img-fluid rounded shadow"
+     width="900">
+</div>
+
+<!-- Diploma in Civil Engineering -->
+<div *ngIf="selectedGroup === 'Diploma in Civil Engineering'" class="text-center mb-4">
+  <img src="assets/images/civil.jpg"
+       alt="Diploma in Civil Engineering"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Diploma in Mechanical Engineering -->
+<div *ngIf="selectedGroup === 'Diploma in Mechanical Engineering'" class="text-center mb-4">
+  <img src="assets/images/dm.jpg"
+       alt="Diploma in Mechanical Engineering"
+       class="img-fluid rounded shadow">
+</div>
+
+
+<!-- Diploma in Electronics & Communication Engineering -->
+<div *ngIf="selectedGroup === 'Diploma in Electronics & Communication Engineering'" class="text-center mb-4">
+  <img src="assets/images/eee.jpg"
+       alt="Diploma in Electronics & Communication Engineering"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Diploma in Automobile Engineering -->
+<div *ngIf="selectedGroup === 'Diploma in Automobile Engineering'" class="text-center mb-4">
+  <img src="assets/images/auto.jpg"
+       alt="Diploma in Automobile Engineering"
+       class="img-fluid rounded shadow">
+</div>
+
+<!-- Diploma in Chemical Engineering -->
+<div *ngIf="selectedGroup === 'Diploma in Chemical Engineering'" class="text-center mb-4">
+  <img src="assets/images/chem.jpg"
+       alt="Diploma in Chemical Engineering"
+       class="img-fluid rounded shadow">
+</div>
+
   <div class="row g-4">
+
     <div class="col-12 col-lg-8">
+
       <ng-container *ngIf="selectedHigher && selectedHigher !== 'All'; else showDegreeOrGroup">
-        <ng-container *ngTemplateOutlet="higherOverview"></ng-container>
+     <ng-container *ngTemplateOutlet="higherOverview"></ng-container>
       </ng-container>
 
       <ng-template #showDegreeOrGroup>
@@ -55,10 +306,16 @@
         <div class="card detail-card">
           <div class="card-body overview-panel">
             <h4 class="mb-3">{{ getSelectedDegreeFullDetails()?.title }}</h4>
-            <section class="mb-3">
-              <h6>Overview</h6>
-              <p>{{ getSelectedDegreeFullDetails()?.overview }}</p>
-            </section>
+           <section class="mb-3">
+  <h6>Overview</h6>
+  <p>{{ getSelectedDegreeFullDetails()?.overview }}</p>
+
+  <div class="alert alert-info mt-2">
+    <strong>Higher Education Opportunity:</strong>
+    After completing this diploma course, students can apply for Lateral Entry admissions
+    and join directly in the second year (3rd semester) of B.Tech/B.E. programs.
+  </div>
+</section>
 
             <section class="mb-3 row">
               <div class="col-12 col-md-4">
@@ -515,4 +772,4 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
