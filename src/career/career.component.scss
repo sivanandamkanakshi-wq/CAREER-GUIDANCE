@@ -1109,3 +1109,365 @@
     transition: none !important;
   }
 }
+/* =========================================
+   MODERN GROUP OVERVIEW CARD DESIGN
+========================================= */
+
+.group-overview {
+  width: 100%;
+}
+
+
+/* Main About Section */
+
+.overview-intro {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f7f5ff
+  );
+
+  border: 1px solid rgba(114, 66, 209, 0.12);
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  margin-bottom: 28px;
+
+  box-shadow:
+    0 10px 30px rgba(70, 50, 140, 0.08);
+}
+
+
+.overview-intro h3 {
+  color: #4a2878;
+
+  font-size: 1.6rem;
+
+  font-weight: 800;
+
+  margin-bottom: 20px;
+}
+
+
+.overview-intro p {
+  color: #5b5870;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  margin-bottom: 10px;
+}
+
+
+.overview-intro strong {
+  color: #5e35b1;
+}
+
+
+/* =========================================
+   CARD GRID
+========================================= */
+
+.info-cards-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+
+  align-items: stretch;
+}
+
+
+/* =========================================
+   INFORMATION CARD
+========================================= */
+
+.info-card {
+  background: white;
+
+  border: 1px solid rgba(114, 66, 209, 0.12);
+
+  border-radius: 20px;
+
+  padding: 24px;
+
+  min-height: 220px;
+
+  box-shadow:
+    0 8px 25px rgba(70, 50, 140, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  overflow: hidden;
+}
+
+
+.info-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(114, 66, 209, 0.35);
+
+  box-shadow:
+    0 18px 40px rgba(70, 50, 140, 0.16);
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.info-card h5 {
+  color: #4d2c82;
+
+  font-size: 1.05rem;
+
+  font-weight: 800;
+
+  margin-bottom: 18px;
+
+  padding-bottom: 12px;
+
+  border-bottom:
+    2px solid rgba(114, 66, 209, 0.12);
+}
+
+
+/* =========================================
+   CARD TEXT
+========================================= */
+
+.info-card p {
+  color: #5b5870;
+
+  font-size: 0.95rem;
+
+  line-height: 1.8;
+
+  margin-bottom: 0;
+}
+
+
+/* =========================================
+   LIST DESIGN
+========================================= */
+
+.info-card ul {
+  padding-left: 20px;
+
+  margin-bottom: 0;
+}
+
+
+.info-card li {
+  color: #55516d;
+
+  line-height: 1.7;
+
+  margin-bottom: 7px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.info-card li::marker {
+  color: #7242d1;
+}
+
+
+.info-card li:hover {
+  color: #5e35b1;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   SUBJECT DETAILS
+========================================= */
+
+.detail-item {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: 12px 0;
+
+  border-bottom:
+    1px solid rgba(114, 66, 209, 0.08);
+}
+
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+
+.detail-item strong {
+  color: #5e35b1;
+
+  font-size: 0.92rem;
+}
+
+
+.detail-item span {
+  color: #5b5870;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.info-card a {
+  color: #5e35b1;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  word-break: break-word;
+}
+
+
+.info-card a:hover {
+  color: #4776e6;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   SPECIAL FULL WIDTH CARDS
+========================================= */
+
+.full-width-card {
+  grid-column: 1 / -1;
+
+  min-height: auto;
+}
+
+
+.helpful-card {
+  grid-column: span 2;
+}
+
+
+.pathway-card {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f9f7ff
+  );
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .info-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .helpful-card {
+    grid-column: span 2;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .info-cards-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+
+  .info-card {
+    min-height: auto;
+
+    padding: 20px;
+  }
+
+
+  .overview-intro {
+    padding: 22px;
+  }
+
+
+  .overview-intro h3 {
+    font-size: 1.3rem;
+  }
+
+
+  .helpful-card,
+  .full-width-card {
+    grid-column: auto;
+  }
+
+}
+/* COLOR ACCENTS FOR INFORMATION CARDS */
+
+.info-card:nth-child(3n + 1) {
+  border-top: 5px solid #8b5cf6;
+}
+
+.info-card:nth-child(3n + 2) {
+  border-top: 5px solid #3b82f6;
+}
+
+.info-card:nth-child(3n) {
+  border-top: 5px solid #ec4899;
+}
+
+
+/* Soft background variation */
+
+.info-card:nth-child(3n + 1) {
+  background: linear-gradient(135deg, #ffffff, #faf7ff);
+}
+
+.info-card:nth-child(3n + 2) {
+  background: linear-gradient(135deg, #ffffff, #f5f9ff);
+}
+
+.info-card:nth-child(3n) {
+  background: linear-gradient(135deg, #ffffff, #fff7fb);
+}
+
+
+/* Different title colors */
+
+.info-card:nth-child(3n + 1) h5 {
+  color: #6d28d9;
+}
+
+.info-card:nth-child(3n + 2) h5 {
+  color: #2563eb;
+}
+
+.info-card:nth-child(3n) h5 {
+  color: #db2777;
+}

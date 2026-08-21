@@ -2352,70 +2352,172 @@ higherOptionsMap: { [key: string]: string[] } = {
   }
 
   buildGenericGroupOverview(groupKey: string) {
-    const options = this.degreeOptionsMap[groupKey] || this.groupOptionsMap[this.selectedAfter10th] || [];
-    const subjects = options && options.length > 1 ? options.slice(1, 7) : [];
-    const coursesAfter = options && options.length > 1 ? options.slice(1, 12) : [];
-    const higher = this.groupHigherMap[groupKey] || [];
 
-    return {
-      title: `${groupKey} Group Overview`,
-      about: `${groupKey} provides career and vocational pathways related to ${groupKey}. Explore courses, certifications and job roles in this area.`,
-      whyChoose: `Choose ${groupKey} to gain practical skills and direct industry-oriented training leading to employability and higher studies.`,
-      subjects: subjects,
-      subjectDetails: {},
-      skills: ['Practical Skills', 'Technical Knowledge', 'Job Readiness', 'Problem Solving', 'Communication'],
-      skillDetails: [],
-      coursesAfter: coursesAfter,
-      careerOptions: coursesAfter.slice(0, 6),
-      governmentExams: [],
-      governmentJobs: [],
-      privateJobs: coursesAfter.slice(0, 6),
-      higherEducation: higher,
-      bestPaths: coursesAfter.slice(0, 5).map(c => `${c} → higher studies`),
-      salaryInfo: 'Salary varies by role and region; vocational training often leads to skilled-jobs and steady income.',
-      futureScope: 'Industry-relevant skills and certifications increase employability and long-term prospects.',
-      topColleges: [],
-      topUniversities: [],
-      entranceExams: [],
-      videoLinks: [
-        'https://www.youtube.com/results?search_query=' + encodeURIComponent(groupKey + ' career guidance'),
-        'https://www.youtube.com/results?search_query=' + encodeURIComponent(groupKey + ' jobs'),
-        'https://www.youtube.com/results?search_query=' + encodeURIComponent(groupKey + ' skills')
-      ],
-      websites: [
-        'https://www.ncs.gov.in/',
-        'https://www.skillindia.gov.in/',
-        'https://www.aicte-india.org/'
-      ],
-      certificationLinks: [
-        'https://www.coursera.org/',
-        'https://www.udemy.com/',
-        'https://www.nptel.ac.in/'
-      ],
-      universityLinks: [
-        'https://www.aicte-india.org/',
-        'https://www.ugc.gov.in/'
-      ],
-      interviewPrepLinks: [
-        'https://www.indiabix.com/',
-        'https://www.geeksforgeeks.org/'
-      ],
-      courseLinks: [
-        'https://www.coursera.org/',
-        'https://www.edx.org/'
-      ],
-      governmentJobLinks: [
-        'https://www.upsc.gov.in/',
-        'https://ssc.nic.in/'
-      ],
-      relatedResources: [
-        'https://www.nirfindia.org/',
-        'https://www.studyinindia.gov.in/'
-      ],
-      faqs: [],
-      conclusion: `${groupKey} offers practical pathways for students looking for job-oriented training and specialised skills.`
-    };
-  }
+  const options =
+    this.degreeOptionsMap[groupKey] ||
+    this.groupOptionsMap[this.selectedAfter10th] ||
+    [];
+
+  const subjects = [
+  'Core Subject Knowledge',
+  'Fundamental Concepts',
+  'Practical Learning',
+  'Technical Concepts',
+  'Industry Knowledge'
+];
+
+  const coursesAfter =
+    options && options.length > 1
+      ? options.slice(1, 12)
+      : [];
+
+  const higher = this.groupHigherMap[groupKey] || [];
+
+  const careerOptions = [
+    'Industry Specialist',
+    'Technical Professional',
+    'Operations Executive',
+    'Project Coordinator',
+    'Trainer',
+    'Consultant'
+  ];
+
+  const privateJobs = [
+    'Technical Executive',
+    'Operations Assistant',
+    'Junior Executive',
+    'Support Specialist',
+    'Field Assistant',
+    'Trainee'
+  ];
+
+  const bestPaths = [
+    `${groupKey} → Higher Studies → Specialist`,
+    `${groupKey} → Skill Training → Professional`,
+    `${groupKey} → Internship → Industry Job`,
+    `${groupKey} → Experience → Senior Role`
+  ];
+
+  return {
+    title: `${groupKey} Group Overview`,
+
+    about:
+      `${groupKey} provides career and vocational pathways related to ${groupKey}. ` +
+      `Explore courses, certifications and job roles in this area.`,
+
+    whyChoose:
+      `Choose ${groupKey} to gain practical skills and direct industry-oriented ` +
+      `training leading to employability and higher studies.`,
+
+    subjects: subjects,
+
+    subjectDetails: {
+  'Core Subject Knowledge':
+    'Learn the fundamental concepts and basic knowledge related to this course.',
+
+  'Fundamental Concepts':
+    'Understand the important principles, theories and concepts of the selected field.',
+
+  'Practical Learning':
+    'Develop practical knowledge through activities, projects, laboratory work or real-world applications.',
+
+  'Technical Concepts':
+    'Learn the technical methods, tools and concepts required for further studies and careers.',
+
+  'Industry Knowledge':
+    'Understand how the knowledge and skills of this field are applied in industry and professional careers.'
+},
+
+    skills: [
+      'Practical Skills',
+      'Technical Knowledge',
+      'Job Readiness',
+      'Problem Solving',
+      'Communication'
+    ],
+
+    skillDetails: [],
+
+    coursesAfter: coursesAfter,
+
+    careerOptions: careerOptions,
+
+    governmentExams: [],
+
+    governmentJobs: [],
+
+    privateJobs: privateJobs,
+
+    higherEducation: higher,
+
+    bestPaths: bestPaths,
+
+    salaryInfo:
+      'Salary varies by role, skills, experience and location.',
+
+    futureScope:
+      'Industry-relevant skills, certifications and practical experience can improve employability and future career opportunities.',
+
+    topColleges: [],
+
+    topUniversities: [],
+
+    entranceExams: [],
+
+    videoLinks: [
+      'https://www.youtube.com/results?search_query=' +
+      encodeURIComponent(groupKey + ' career guidance'),
+
+      'https://www.youtube.com/results?search_query=' +
+      encodeURIComponent(groupKey + ' jobs'),
+
+      'https://www.youtube.com/results?search_query=' +
+      encodeURIComponent(groupKey + ' skills')
+    ],
+
+    websites: [
+      'https://www.ncs.gov.in/',
+      'https://www.skillindia.gov.in/',
+      'https://www.aicte-india.org/'
+    ],
+
+    certificationLinks: [
+      'https://www.coursera.org/',
+      'https://www.udemy.com/',
+      'https://www.nptel.ac.in/'
+    ],
+
+    universityLinks: [
+      'https://www.aicte-india.org/',
+      'https://www.ugc.gov.in/'
+    ],
+
+    interviewPrepLinks: [
+      'https://www.indiabix.com/',
+      'https://www.geeksforgeeks.org/'
+    ],
+
+    courseLinks: [
+      'https://www.coursera.org/',
+      'https://www.edx.org/'
+    ],
+
+    governmentJobLinks: [
+      'https://www.upsc.gov.in/',
+      'https://ssc.nic.in/'
+    ],
+
+    relatedResources: [
+      'https://www.nirfindia.org/',
+      'https://www.studyinindia.gov.in/'
+    ],
+
+    faqs: [],
+
+    conclusion:
+      `${groupKey} offers practical pathways for students looking for job-oriented training and specialised skills.`
+  };
+}
 
   onDegreeChange(value: string) {
     this.selectedDegree = value;
@@ -2497,9 +2599,23 @@ higherOptionsMap: { [key: string]: string[] } = {
       internships: ['Industry internships', 'Research assistantships', 'Capstone projects'],
       certifications: ['Relevant professional certificates and short courses depending on specialization'],
       recommendedOnlineCourses: ['MOOCs and specializations from Coursera/edX/Pluralsight relevant to the field'],
-      careerOptions: popular,
+      careerOptions: [
+  'Specialist',
+  'Analyst',
+  'Consultant',
+  'Research Professional',
+  'Project Manager',
+  'Trainer'
+],
       governmentJobs: [],
-      privateJobs: popular,
+      privateJobs: [
+  'Junior Specialist',
+  'Executive',
+  'Analyst',
+  'Consultant',
+  'Research Associate',
+  'Project Assistant'
+],
       researchOpportunities: ['PhD', 'Research assistantships', 'Industry R&D roles'],
       studyAbroadOptions: [],
       entranceExams: [],

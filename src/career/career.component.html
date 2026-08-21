@@ -479,169 +479,389 @@
       </ng-template>
 
       <ng-template #groupOverviewMain>
-        <div class="card">
-          <div class="card-body overview-panel">
-            <h3 class="overview-header">{{ groupOverviewMap[selectedGroup]?.title || (selectedGroup + ' Group Overview') }}</h3>
-            <p class="muted"><strong>About:</strong> {{ groupOverviewMap[selectedGroup]?.about || ('Overview for ' + selectedGroup) }}</p>
-            <p class="muted"><strong>Why Choose:</strong> {{ groupOverviewMap[selectedGroup]?.whyChoose || '' }}</p>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.subjects?.length">
-              <h6 class="overview-section">Subjects in this Group</h6>
-              <ul>
-                <li *ngFor="let s of groupOverviewMap[selectedGroup]?.subjects">{{ s }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.subjectDetails">
-              <h6 class="overview-section">Subject Details</h6>
-              <div *ngFor="let key of (groupOverviewMap[selectedGroup]?.subjectDetails | keyvalue)">
-                <p><strong>{{ key.key }}:</strong> {{ key.value }}</p>
-              </div>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.skills?.length">
-              <h6 class="overview-section">Skills You Will Learn</h6>
-              <ul>
-                <li *ngFor="let sk of groupOverviewMap[selectedGroup]?.skills">{{ sk }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.skillDetails?.length">
-              <h6 class="overview-section">Skill Details</h6>
-              <ul>
-                <li *ngFor="let sd of groupOverviewMap[selectedGroup]?.skillDetails">{{ sd }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.coursesAfter?.length">
-              <h6 class="overview-section">Popular Courses After</h6>
-              <ul>
-                <li *ngFor="let c of groupOverviewMap[selectedGroup]?.coursesAfter">{{ c }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.careerOptions?.length">
-              <h6 class="overview-section">Career Options</h6>
-              <ul>
-                <li *ngFor="let co of groupOverviewMap[selectedGroup]?.careerOptions">{{ co }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.degreeSpecializations?.length">
-              <h6 class="overview-section">Degree Specializations</h6>
-              <ul>
-                <li *ngFor="let ds of groupOverviewMap[selectedGroup]?.degreeSpecializations">{{ ds }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.governmentExams?.length || groupOverviewMap[selectedGroup]?.governmentJobs?.length || groupOverviewMap[selectedGroup]?.privateJobs?.length">
-              <div class="row">
-                <div class="col-12 col-md-4" *ngIf="groupOverviewMap[selectedGroup]?.governmentExams?.length">
-                  <h6>Government Exams</h6>
-                  <ul>
-                    <li *ngFor="let ex of groupOverviewMap[selectedGroup]?.governmentExams">{{ ex }}</li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-4" *ngIf="groupOverviewMap[selectedGroup]?.governmentJobs?.length">
-                  <h6>Government Jobs</h6>
-                  <ul>
-                    <li *ngFor="let g of groupOverviewMap[selectedGroup]?.governmentJobs">{{ g }}</li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-4" *ngIf="groupOverviewMap[selectedGroup]?.privateJobs?.length">
-                  <h6>Private Jobs</h6>
-                  <ul>
-                    <li *ngFor="let p of groupOverviewMap[selectedGroup]?.privateJobs">{{ p }}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.higherEducation?.length">
-              <h6 class="overview-section">Higher Education</h6>
-              <ul>
-                <li *ngFor="let he of groupOverviewMap[selectedGroup]?.higherEducation">{{ he }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.bestPaths?.length">
-              <h6 class="overview-section">Suggested Pathways</h6>
-              <ul>
-                <li *ngFor="let bp of groupOverviewMap[selectedGroup]?.bestPaths">{{ bp }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.salaryInfo">
-              <h6 class="overview-section">Salary</h6>
-              <p>{{ groupOverviewMap[selectedGroup]?.salaryInfo }}</p>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.futureScope">
-              <h6 class="overview-section">Future Scope</h6>
-              <p>{{ groupOverviewMap[selectedGroup]?.futureScope }}</p>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.topColleges?.length || groupOverviewMap[selectedGroup]?.topUniversities?.length">
-              <h6 class="overview-section">Top Colleges & Universities</h6>
-              <ul>
-                <li *ngFor="let t of (groupOverviewMap[selectedGroup]?.topColleges || [])">{{ t }}</li>
-                <li *ngFor="let u of (groupOverviewMap[selectedGroup]?.topUniversities || [])">{{ u }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.certifications?.length">
-              <h6 class="overview-section">Certifications</h6>
-              <ul>
-                <li *ngFor="let cert of groupOverviewMap[selectedGroup]?.certifications">{{ cert }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.certificationLinks?.length || groupOverviewMap[selectedGroup]?.universityLinks?.length">
-              <h6 class="overview-section">Helpful Links</h6>
-              <ul>
-                <li *ngFor="let cl of (groupOverviewMap[selectedGroup]?.certificationLinks || [])"><a [href]="cl" target="_blank">{{ cl }}</a></li>
-                <li *ngFor="let ul of (groupOverviewMap[selectedGroup]?.universityLinks || [])"><a [href]="ul" target="_blank">{{ ul }}</a></li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.industriesHiringCECStudents?.length">
-              <h6 class="overview-section">Industries Hiring</h6>
-              <ul>
-                <li *ngFor="let ind of groupOverviewMap[selectedGroup]?.industriesHiringCECStudents">{{ ind }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.advantages?.length || groupOverviewMap[selectedGroup]?.challenges?.length">
-              <div class="row">
-                <div class="col-12 col-md-6" *ngIf="groupOverviewMap[selectedGroup]?.advantages?.length">
-                  <h6>Advantages</h6>
-                  <ul>
-                    <li *ngFor="let a of groupOverviewMap[selectedGroup]?.advantages">{{ a }}</li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-6" *ngIf="groupOverviewMap[selectedGroup]?.challenges?.length">
-                  <h6>Challenges</h6>
-                  <ul>
-                    <li *ngFor="let ch of groupOverviewMap[selectedGroup]?.challenges">{{ ch }}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.dailyActivities?.length">
-              <h6 class="overview-section">Typical Daily Activities</h6>
-              <ul>
-                <li *ngFor="let d of groupOverviewMap[selectedGroup]?.dailyActivities">{{ d }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.studentSuitableFor?.length">
-              <h6 class="overview-section">Suitable For</h6>
-              <ul>
-                <li *ngFor="let st of groupOverviewMap[selectedGroup]?.studentSuitableFor">{{ st }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.videoLinks?.length || groupOverviewMap[selectedGroup]?.websites?.length">
-              <h6 class="overview-section">Videos & Websites</h6>
-              <ul>
-                <li *ngFor="let v of (groupOverviewMap[selectedGroup]?.videoLinks || [])"><a [href]="v" target="_blank">Watch</a></li>
-                <li *ngFor="let w of (groupOverviewMap[selectedGroup]?.websites || [])"><a [href]="w" target="_blank">{{ w }}</a></li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.faqs?.length">
-              <h6 class="overview-section">FAQs</h6>
-              <ul>
-                <li *ngFor="let f of groupOverviewMap[selectedGroup]?.faqs">{{ f }}</li>
-              </ul>
-            </div>
-            <div *ngIf="groupOverviewMap[selectedGroup]?.conclusion">
-              <h6 class="overview-section">Conclusion</h6>
-              <p>{{ groupOverviewMap[selectedGroup]?.conclusion }}</p>
-            </div>
-          </div>
+
+  <div class="group-overview">
+
+    <!-- Main Introduction -->
+    <div class="overview-intro">
+      <h3>
+        {{ groupOverviewMap[selectedGroup]?.title ||
+        (selectedGroup + ' Group Overview') }}
+      </h3>
+
+      <p>
+        <strong>About:</strong>
+        {{ groupOverviewMap[selectedGroup]?.about ||
+        ('Overview for ' + selectedGroup) }}
+      </p>
+
+      <p>
+        <strong>Why Choose:</strong>
+        {{ groupOverviewMap[selectedGroup]?.whyChoose || '' }}
+      </p>
+    </div>
+
+
+    <!-- Information Cards -->
+    <div class="info-cards-grid">
+
+      <!-- Subjects -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.subjects?.length">
+
+        <h5>📚 Subjects in this Group</h5>
+
+        <ul>
+          <li *ngFor="let s of groupOverviewMap[selectedGroup]?.subjects">
+            {{ s }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Subject Details -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.subjectDetails">
+
+        <h5>📖 Subject Details</h5>
+
+        <div
+          *ngFor="let key of (groupOverviewMap[selectedGroup]?.subjectDetails | keyvalue)"
+          class="detail-item">
+
+          <strong>{{ key.key }}:</strong>
+          <span>{{ key.value }}</span>
+
         </div>
-      </ng-template>
+      </div>
+
+
+      <!-- Skills -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.skills?.length">
+
+        <h5>⭐ Skills You Will Learn</h5>
+
+        <ul>
+          <li *ngFor="let sk of groupOverviewMap[selectedGroup]?.skills">
+            {{ sk }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Skill Details -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.skillDetails?.length">
+
+        <h5>🧠 Skill Details</h5>
+
+        <ul>
+          <li *ngFor="let sd of groupOverviewMap[selectedGroup]?.skillDetails">
+            {{ sd }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Popular Courses -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.coursesAfter?.length">
+
+        <h5>🎓 Popular Courses After</h5>
+
+        <ul>
+          <li *ngFor="let c of groupOverviewMap[selectedGroup]?.coursesAfter">
+            {{ c }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Career Options -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.careerOptions?.length">
+
+        <h5>💼 Career Options</h5>
+
+        <ul>
+          <li *ngFor="let co of groupOverviewMap[selectedGroup]?.careerOptions">
+            {{ co }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Degree Specializations -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.degreeSpecializations?.length">
+
+        <h5>🎯 Degree Specializations</h5>
+
+        <ul>
+          <li *ngFor="let ds of groupOverviewMap[selectedGroup]?.degreeSpecializations">
+            {{ ds }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Government Exams -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.governmentExams?.length">
+
+        <h5>📝 Government Exams</h5>
+
+        <ul>
+          <li *ngFor="let ex of groupOverviewMap[selectedGroup]?.governmentExams">
+            {{ ex }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Government Jobs -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.governmentJobs?.length">
+
+        <h5>🏛️ Government Jobs</h5>
+
+        <ul>
+          <li *ngFor="let g of groupOverviewMap[selectedGroup]?.governmentJobs">
+            {{ g }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Private Jobs -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.privateJobs?.length">
+
+        <h5>🏢 Private Jobs</h5>
+
+        <ul>
+          <li *ngFor="let p of groupOverviewMap[selectedGroup]?.privateJobs">
+            {{ p }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Higher Education -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.higherEducation?.length">
+
+        <h5>🏫 Higher Education</h5>
+
+        <ul>
+          <li *ngFor="let he of groupOverviewMap[selectedGroup]?.higherEducation">
+            {{ he }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Suggested Pathways -->
+      <div class="info-card pathway-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.bestPaths?.length">
+
+        <h5>🛣️ Suggested Pathways</h5>
+
+        <ul>
+          <li *ngFor="let bp of groupOverviewMap[selectedGroup]?.bestPaths">
+            {{ bp }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Salary -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.salaryInfo">
+
+        <h5>💰 Salary Information</h5>
+
+        <p>
+          {{ groupOverviewMap[selectedGroup]?.salaryInfo }}
+        </p>
+      </div>
+
+
+      <!-- Future Scope -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.futureScope">
+
+        <h5>🚀 Future Scope</h5>
+
+        <p>
+          {{ groupOverviewMap[selectedGroup]?.futureScope }}
+        </p>
+      </div>
+
+
+      <!-- Colleges -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.topColleges?.length ||
+               groupOverviewMap[selectedGroup]?.topUniversities?.length">
+
+        <h5>🏛️ Top Colleges & Universities</h5>
+
+        <ul>
+          <li *ngFor="let t of (groupOverviewMap[selectedGroup]?.topColleges || [])">
+            {{ t }}
+          </li>
+
+          <li *ngFor="let u of (groupOverviewMap[selectedGroup]?.topUniversities || [])">
+            {{ u }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Certifications -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.certifications?.length">
+
+        <h5>📜 Certifications</h5>
+
+        <ul>
+          <li *ngFor="let cert of groupOverviewMap[selectedGroup]?.certifications">
+            {{ cert }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Industries Hiring -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.industriesHiringCECStudents?.length">
+
+        <h5>🏭 Industries Hiring</h5>
+
+        <ul>
+          <li *ngFor="let ind of groupOverviewMap[selectedGroup]?.industriesHiringCECStudents">
+            {{ ind }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Advantages -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.advantages?.length">
+
+        <h5>✅ Advantages</h5>
+
+        <ul>
+          <li *ngFor="let a of groupOverviewMap[selectedGroup]?.advantages">
+            {{ a }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Challenges -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.challenges?.length">
+
+        <h5>⚡ Challenges</h5>
+
+        <ul>
+          <li *ngFor="let ch of groupOverviewMap[selectedGroup]?.challenges">
+            {{ ch }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Daily Activities -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.dailyActivities?.length">
+
+        <h5>📅 Typical Daily Activities</h5>
+
+        <ul>
+          <li *ngFor="let d of groupOverviewMap[selectedGroup]?.dailyActivities">
+            {{ d }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Suitable For -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.studentSuitableFor?.length">
+
+        <h5>👨‍🎓 Suitable For</h5>
+
+        <ul>
+          <li *ngFor="let st of groupOverviewMap[selectedGroup]?.studentSuitableFor">
+            {{ st }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Helpful Links -->
+      <div class="info-card helpful-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.certificationLinks?.length ||
+               groupOverviewMap[selectedGroup]?.universityLinks?.length ||
+               groupOverviewMap[selectedGroup]?.videoLinks?.length ||
+               groupOverviewMap[selectedGroup]?.websites?.length">
+
+        <h5>🔗 Helpful Links & Resources</h5>
+
+        <ul>
+          <li *ngFor="let cl of (groupOverviewMap[selectedGroup]?.certificationLinks || [])">
+            <a [href]="cl" target="_blank">{{ cl }}</a>
+          </li>
+
+          <li *ngFor="let ul of (groupOverviewMap[selectedGroup]?.universityLinks || [])">
+            <a [href]="ul" target="_blank">{{ ul }}</a>
+          </li>
+
+          <li *ngFor="let v of (groupOverviewMap[selectedGroup]?.videoLinks || [])">
+            <a [href]="v" target="_blank">Watch Video</a>
+          </li>
+
+          <li *ngFor="let w of (groupOverviewMap[selectedGroup]?.websites || [])">
+            <a [href]="w" target="_blank">{{ w }}</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- FAQs -->
+      <div class="info-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.faqs?.length">
+
+        <h5>❓ Frequently Asked Questions</h5>
+
+        <ul>
+          <li *ngFor="let f of groupOverviewMap[selectedGroup]?.faqs">
+            {{ f }}
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Conclusion -->
+      <div class="info-card full-width-card"
+        *ngIf="groupOverviewMap[selectedGroup]?.conclusion">
+
+        <h5>🏁 Conclusion</h5>
+
+        <p>
+          {{ groupOverviewMap[selectedGroup]?.conclusion }}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</ng-template>
     </div>
     
       <!-- Higher overview template to reuse in main and side panes -->
