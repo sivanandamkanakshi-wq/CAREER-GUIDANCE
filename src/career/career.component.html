@@ -10,6 +10,67 @@
     </div>
   </header>
 
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search courses, groups or careers..."
+      [(ngModel)]="searchText"
+      (input)="searchCourse()">
+    <button (click)="searchCourse()">Search</button>
+  </div>
+
+  <div class="search-results" *ngIf="searchResults.length > 0">
+    <div class="search-result" *ngFor="let result of searchResults" (click)="selectSearchResult(result)">
+      {{ result }}
+    </div>
+  </div>
+
+  <div class="career-roadmap">
+    <h2>🛣️ Your Career Roadmap</h2>
+
+    <div class="roadmap-steps">
+
+      <div class="roadmap-step">
+        <div class="step-icon">📚</div>
+        <h3>Step 1</h3>
+        <p>Choose Your Education</p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="roadmap-step">
+        <div class="step-icon">🎓</div>
+        <h3>Step 2</h3>
+        <p>Select Course</p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="roadmap-step">
+        <div class="step-icon">🧠</div>
+        <h3>Step 3</h3>
+        <p>Develop Skills</p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="roadmap-step">
+        <div class="step-icon">💼</div>
+        <h3>Step 4</h3>
+        <p>Start Your Career</p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="roadmap-step">
+        <div class="step-icon">🚀</div>
+        <h3>Step 5</h3>
+        <p>Career Growth</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="filters">
     <div class="filter">
       <label for="f-After10th">After 10th</label>
@@ -303,7 +364,7 @@
 
       <ng-template #showDegreeOrGroup>
         <div *ngIf="selectedDegree && selectedDegree !== 'All'; else groupOverviewMain">
-        <div class="card detail-card">
+        <div class="card detail-card" id="course-details">
           <div class="card-body overview-panel">
             <h4 class="mb-3">{{ getSelectedDegreeFullDetails()?.title }}</h4>
            <section class="mb-3">

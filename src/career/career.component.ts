@@ -17,6 +17,9 @@ export class CareerComponent {
   ];
 
   selectedAfter10th = 'All';
+  selectedSection = '';
+  searchText: string = '';
+  searchResults: string[] = [];
 
   groupOptionsMap: { [key: string]: string[] } = {
     'Intermediate': ['All', 'MPC', 'BiPC', 'MEC', 'CEC', 'HEC'],
@@ -2249,6 +2252,65 @@ higherOptionsMap: { [key: string]: string[] } = {
     }
   };
   selectedHigherOverview: any = null;
+
+  searchCourse() {
+    const search = this.searchText.toLowerCase().trim();
+
+    if (!search) {
+      this.searchResults = [];
+      return;
+    }
+
+    this.searchResults = [];
+
+    // Search in degree/course options
+    for (const key in this.degreeOptionsMap) {
+      const options = this.degreeOptionsMap[key];
+      options.forEach((course: string) => {
+        if (course.toLowerCase().includes(search)) {
+          this.searchResults.push(course);
+        }
+      });
+    }
+
+    // Search in group options
+    for (const key in this.groupOptionsMap) {
+      const options = this.groupOptionsMap[key];
+      options.forEach((group: string) => {
+        if (group.toLowerCase().includes(search)) {
+          this.searchResults.push(group);
+        }
+      });
+    }
+  }
+
+  selectSearchResult(result: string) {
+    this.searchText = result;
+    this.searchResults = [];
+
+    // Find the selected course
+    for (const key in this.degreeOptionsMap) {
+      const courses = this.degreeOptionsMap[key];
+      if (courses.includes(result)) {
+        this.selectedDegree = result;
+
+        // Open the course details
+        this.getSelectedDegreeFullDetails();
+
+        // Scroll to the course details
+        setTimeout(() => {
+          const details = document.getElementById('course-details');
+          if (details) {
+            details.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 100);
+        return;
+      }
+    }
+  }
 
   onAfter10thChange(value: string) {
     this.selectedAfter10th = value;
